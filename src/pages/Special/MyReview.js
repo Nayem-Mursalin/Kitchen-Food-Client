@@ -15,10 +15,9 @@ const AddReview = () => {
     console.log(review);
     return (
         <div>
-            <h2>Your Total Review: {review.length}</h2>
+            <h2>Your Total Review is: {review.length}</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
-
                     <thead>
                         <tr>
                             <th>Name</th>
