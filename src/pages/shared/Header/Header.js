@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logout()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err));
+    }
 
     const menuItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/services'>Services</Link></li>
         <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+        {
+            user?.email ?
+                <>
+                    <li className='font-semibold'><Link to='/myreview'>My Review</Link></li>
+                    <li className='font-semibold'><Link to='/addservices'>Add Service</Link></li>
+                </>
+                :
+                <></>
+        }
 
 
 
@@ -32,7 +52,12 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {
-                    <button className='btn btn-outline btn-primary'><Link to='/login'>login</Link></button>
+                    user?.email ?
+                        <>
+                            <button onClick={handleLogOut} className='btn btn-outline btn-primary'>Sign Out</button>
+                        </>
+                        :
+                        <button className='btn btn-outline btn-primary'><Link to='/login'>login</Link></button>
                 }
             </div>
         </div>

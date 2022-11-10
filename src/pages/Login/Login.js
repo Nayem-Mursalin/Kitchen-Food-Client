@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, googleSignIn, googleProvider } = useContext(AuthContext);
+
+
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,6 +19,17 @@ const Login = () => {
             })
             .catch(err => console.error(err));
     }
+
+    const handlegoogleSignin = (provider) => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err));
+
+    }
+
     return (
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
@@ -46,7 +59,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to KitchenFood? <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
-
+                    <button onClick={handlegoogleSignin} className='btn w-100 btn-primary mt-6'>Google SignIn</button>
                 </div>
             </div>
         </div>
