@@ -43,7 +43,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Kitchen Food</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Kitchen Food</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -54,6 +54,11 @@ const Header = () => {
                 {
                     user?.email ?
                         <>
+
+                            <p className='mr-5'>
+                                {user.email}
+                            </p>
+
                             <button onClick={handleLogOut} className='btn btn-outline btn-primary'>Sign Out</button>
                         </>
                         :

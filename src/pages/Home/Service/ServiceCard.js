@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
     const { _id, picture, price, name } = service;
+    // console.log(service);
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src={picture} alt="Shoes" /></figure>
+        <div className="card card-compact w-96 bg-base-100 shadow-xl mb-50">
+            <figure><img src={picture} alt="Food" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p className='text-2xl text-orange-600 font-semibold'>Price: ${price}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/checkout/${_id}`}>
+                    <Link to={`/services/${_id}`}>
                         <button className="btn btn-primary">See Details</button>
                     </Link>
                 </div>
