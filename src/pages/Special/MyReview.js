@@ -1,50 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
-const MyReview = () => {
+const AddReview = () => {
     const { user } = useContext(AuthContext);
-    const handlePlaceOrder = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const name = `${form.firstName.value}`;
-        const email = user?.email || 'unregistered';
-        const message = form.message.value;
+    const [review, setReview] = useState([]);
 
 
-        const review = {
-            name,
-            email,
-            message,
-        }
-
-        fetch('http://localhost:5500/reviews', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(review)
-        })
+    useEffect(() => {
+        fetch(`http://localhost:5500/reviews?email=${user?.email}`)
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    alert('Review placed successfully')
-                    form.reset();
-                }
-            })
-            .catch(er => console.error(er));
-    }
+            .then(data => setReview(data))
+            .catch(err => console.error(err))
+    }, [user?.email]);
+    console.log(review);
     return (
-        <form onSubmit={handlePlaceOrder}>
-            <h4 className="text-4xl">Add your Review</h4>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                <input name='firstName' type="text" placeholder="Name" className="input input-bordered w-full " />
-                <input name='email' type="text" placeholder="Your Email" defaultValue={user?.email} className="input input-bordered w-full" readOnly />
+        <div>
+            <h2>Your Total Review: {review.length}</h2>
+            <div className="overflow-x-auto w-full">
+                <table className="table w-full">
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            review.map(rev => <tr><td>{rev.name}</td> <td>{rev.message}</td></tr>)
+                        }
+                    </tbody>
+
+                </table>
             </div>
-            <textarea name='message' className="textarea textarea-bordered h-24 w-full" placeholder="Your Review"></textarea>
-            <input className='btn btn-primary' type="submit" value="Submit Review" />
-        </form>
+        </div>
     );
 };
 
-export default MyReview;
+export default AddReview;
+
