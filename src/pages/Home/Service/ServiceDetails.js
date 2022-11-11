@@ -3,10 +3,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import MyReview from '../../Special/AddReview';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import AddReview from '../../Special/MyReview';
 import AllReview from '../../Special/AllReview';
+import useTitle from '../../../Hooks/useTitle';
 
 const ServiceDetails = () => {
+    useTitle('Services Details');
     const { name, picture, price, description } = useLoaderData();
     return (
         <div className='mb-100'>
