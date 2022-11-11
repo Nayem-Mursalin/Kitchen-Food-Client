@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 
@@ -59,9 +60,7 @@ const AddReview = () => {
 
 
 
-    const handleUpdate = (id) => {
 
-    }
 
     return (
         <div>
@@ -78,7 +77,7 @@ const AddReview = () => {
                     </thead>
                     <tbody>
                         {
-                            review.map(rev => <tr><td>{rev.name}</td> <td>{rev.message}</td> <td><button onClick={() => handleDelete(rev._id)} className='btn btn-ghost'>Delete</button></td> <td><button onClick={() => handleUpdate(rev._id)} className='btn btn-ghost'>Update</button></td></tr>)
+                            review.map(rev => <tr><td>{rev.name}</td> <td>{rev.message}</td> <td><button onClick={() => handleDelete(rev._id)} className='btn btn-ghost'>Delete</button></td> <td><button className='btn btn-ghost'><Link to={`/myreview/${rev._id}`}>Update</Link></button></td></tr>)
                         }
                     </tbody>
 

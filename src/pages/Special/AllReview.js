@@ -11,7 +11,7 @@ const AllReview = () => {
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.error(err))
-    }, [user?.email]);
+    },);
     console.log(review);
 
 
