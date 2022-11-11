@@ -7,7 +7,7 @@ const AllReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5500/reviews`)
+        fetch(`https://kitchen-food-server-nayem-mursalin.vercel.app/reviews`)
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.error(err))

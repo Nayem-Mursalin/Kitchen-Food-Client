@@ -9,7 +9,7 @@ const AddReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5500/reviews?email=${user?.email}`)
+        fetch(`https://kitchen-food-server-nayem-mursalin.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.error(err))
@@ -20,7 +20,7 @@ const AddReview = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5500/reviews/${id}`, {
+            fetch(`https://kitchen-food-server-nayem-mursalin.vercel.app/reviews/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
@@ -35,26 +35,32 @@ const AddReview = () => {
         }
     }
 
-    const handleUpdate = (id) => {
-        fetch(`http://localhost:5500/reviews/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'Approved' })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    const remaining = review.filter(rev => rev._id !== id);
-                    const approving = review.find(rev => rev._id === id);
-                    approving.status = 'Approved'
+    // const handleUpdate = (id) => {
+    //     fetch(`https://kitchen-food-server-nayem-mursalin.vercel.app/reviews/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ status: 'Approved' })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             if (data.modifiedCount > 0) {
+    //                 const remaining = review.filter(rev => rev._id !== id);
+    //                 const approving = review.find(rev => rev._id === id);
+    //                 approving.status = 'Approved'
 
-                    const newOrders = [approving, ...remaining];
-                    setReview(newOrders);
-                }
-            })
+    //                 const newOrders = [approving, ...remaining];
+    //                 setReview(newOrders);
+    //             }
+    //         })
+    // }
+
+
+
+    const handleUpdate = (id) => {
+
     }
 
     return (

@@ -21,7 +21,7 @@ const AddServices = () => {
             description,
         }
 
-        fetch('http://localhost:5500/services', {
+        fetch('https://kitchen-food-server-nayem-mursalin.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

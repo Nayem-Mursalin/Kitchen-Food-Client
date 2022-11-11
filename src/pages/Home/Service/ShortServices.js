@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 import useTitle from '../../../Hooks/useTitle';
 import ServiceCard from './ServiceCard';
 
-const Service = () => {
-    useTitle('Services')
+const ShortServices = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
         fetch('https://kitchen-food-server-nayem-mursalin.vercel.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);
-
     return (
         <div className='mb-300 ml-10'>
             <div className='text-center mb-4'>
@@ -23,11 +21,11 @@ const Service = () => {
                     services.map(service => <ServiceCard
                         key={service._id}
                         service={service}
-                    ></ServiceCard>)
+                    ></ServiceCard>).slice(3)
                 }
             </div>
         </div>
     );
 };
 
-export default Service;
+export default ShortServices;

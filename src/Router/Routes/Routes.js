@@ -9,6 +9,7 @@ import SignUp from "../../pages/Login/SignUp";
 import MyReview from "../../pages/Special/MyReview";
 import AddServices from "../../pages/Special/AddServices";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UpdateReview from "../../pages/Special/UpdateReview";
 
 
 const router = createBrowserRouter([
@@ -41,13 +42,17 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
             },
             {
+                path: '/myreview/:id',
+                else: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>
+            },
+            {
                 path: '/addservices',
                 element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5500/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://kitchen-food-server-nayem-mursalin.vercel.app/services/${params.id}`)
             }
         ]
     }

@@ -17,7 +17,7 @@ const MyReview = () => {
             message,
         }
 
-        fetch('http://localhost:5500/reviews', {
+        fetch('https://kitchen-food-server-nayem-mursalin.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
