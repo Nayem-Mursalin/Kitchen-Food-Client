@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
-const AddReview = () => {
+const AllReview = () => {
     const { user } = useContext(AuthContext);
     const [review, setReview] = useState([]);
 
 
     useEffect(() => {
-        fetch(`http://localhost:5500/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5500/reviews`)
             .then(res => res.json())
             .then(data => setReview(data))
             .catch(err => console.error(err))
@@ -80,5 +80,4 @@ const AddReview = () => {
     );
 };
 
-export default AddReview;
-
+export default AllReview;

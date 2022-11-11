@@ -4,6 +4,7 @@ import MyReview from '../../Special/AddReview';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import AddReview from '../../Special/MyReview';
+import AllReview from '../../Special/AllReview';
 
 const ServiceDetails = () => {
     const { name, picture, price, description } = useLoaderData();
@@ -25,7 +26,7 @@ const ServiceDetails = () => {
             <div className='card card-compact w-250 my-50 pt-50'>
                 <h2 className='mt-50'>Review Section:</h2><br></br>
                 <p>to See your Review Go to <Link to='/myreview'><button className='btn btn-primary'>Review</button></Link> Page</p>
-                <AddReview></AddReview>
+                <AllReview></AllReview>
                 <MyReview></MyReview>
 
             </div>
