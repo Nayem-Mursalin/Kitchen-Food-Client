@@ -11,8 +11,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <About></About>
-            <ShortServices></ShortServices>
-            <button className='btn btn-red-600 center'><Link to='/services'>See All</Link></button>
+            <ShortServices></ShortServices><br></br><br></br>
+            <button className='ml-100 btn btn-zinc-50 center'><Link to='/services'>See All</Link></button><br></br><br></br>
         </div>
     );
 };
