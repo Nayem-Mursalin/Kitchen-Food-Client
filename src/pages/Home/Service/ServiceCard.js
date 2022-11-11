@@ -13,7 +13,6 @@ const ServiceCard = ({ service }) => {
                     <figure><img src={picture} alt="Food" /></figure>
                 </PhotoView>
             </PhotoProvider>
-
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p className='text-2xl text-orange-600 font-semibold'>Price: ${price}</p>
