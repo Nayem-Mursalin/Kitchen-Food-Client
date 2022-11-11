@@ -16,7 +16,7 @@ const Service = () => {
             <div className='text-center mb-4'>
                 <p className="text-2xl font-bold text-orange-600">Services</p>
                 <h2 className="font-semibold text-5xl">Our Menu</h2>
-                <p>the majority have suffered alteration in some form, by injected humour, or randomised<br /> words which don't look even slightly believable.</p>
+                <p>We Are Providing best Service in Town<br /> Come to US,You Will Amaized</p>
             </div>
             <div className='grid gap-6 grid-cols-1 mid:grid-cols-2 lg:grid-cols-3'>
                 {
